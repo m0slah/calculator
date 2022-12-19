@@ -5,182 +5,101 @@ function Calculator() {
   const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
 
-  const ops = ["/", "*", "+", "-", "."];
-
-  const updateCalc = (value) => {
-    if (
-      (ops.includes(value) && calc === "") ||
-      (ops.includes(value) && ops.includes(calc.slice(-1)))
-    ) {
-      return;
-    }
-
-    setCalc(calc + value);
-
-    if (!ops.includes(value)) {
-      setResult(eval(calc, value).toString());
-    }
+  const changeHandler = (event) => {
+    setResult(result.concat(event.target.name));
   };
 
-  const calculate = (event) => [setCalc(eval(calc).toString())];
+  const clear = () => {
+    setResult("");
+  };
 
-  const deleteLast = () => {
-    if (calc === "") {
-      return;
+  const backSpace = () => {
+    setResult(result.slice(0, result.length - 1));
+  };
+
+  const calculate = () => {
+    try {
+      setResult(eval(result).toString());
+    } catch (err) {
+      setResult("Error");
     }
-    const value = calc.eval();
-    setCalc(value);
   };
 
   return (
     <div className="container bg-red">
       <div className="row">
         <div className="input">
-          {result ? <span>({result})</span> : ""} &nbsp; {calc || "0"}
+          {result}
         </div>
       </div>
       <div className="row ">
-        <button className="button bg-lightGrey" onClick={deleteLast}>
-          AC
+        <button className="button clear bg-lightGrey" onClick={clear}>
+          Clear
         </button>
-        <button className="button bg-lightGrey">+/-</button>
+        {/* <button className="button bg-lightGrey" onClick={backSpace}>
+          C
+        </button> */}
         <button
+          name="%"
           className="button bg-lightGrey"
-          onClick={() => {
-            updateCalc("%");
-          }}
+          onClick={changeHandler}
         >
-          %
+          C
         </button>
-        <button
-          className="button bt-orenge"
-          onClick={() => {
-            updateCalc("/");
-          }}
-        >
+        <button className="button bt-orenge" onClick={backSpace}>
           /
         </button>
       </div>
       <div className="row ">
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("7");
-          }}
-        >
+        <button name="7" className="button" onClick={changeHandler}>
           7
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("8");
-          }}
-        >
+        <button name="8" className="button" onClick={changeHandler}>
           8
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("9");
-          }}
-        >
+        <button name="9" className="button" onClick={changeHandler}>
           9
         </button>
-        <button
-          className="button bt-orenge"
-          onClick={() => {
-            updateCalc("*");
-          }}
-        >
+        <button name="*" className="button bt-orenge" onClick={changeHandler}>
           X
         </button>
       </div>
       <div className="row">
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("4");
-          }}
-        >
+        <button name="4" className="button" onClick={changeHandler}>
           4
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("5");
-          }}
-        >
+        <button name="5" className="button" onClick={changeHandler}>
           5
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("6");
-          }}
-        >
+        <button name="6" className="button" onClick={changeHandler}>
           6
         </button>
-        <button
-          className="button bt-orenge"
-          onClick={() => {
-            updateCalc("-");
-          }}
-        >
+        <button name="-" className="button bt-orenge" onClick={changeHandler}>
           -
         </button>
       </div>
       <div className="row">
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("1");
-          }}
-        >
+        <button name="1" className="button" onClick={changeHandler}>
           1
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("2");
-          }}
-        >
+        <button name="2" className="button" onClick={changeHandler}>
           2
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc("3");
-          }}
-        >
+        <button name="3" className="button" onClick={changeHandler}>
           3
         </button>
-        <button
-          className="button bt-orenge"
-          onClick={() => {
-            updateCalc("+");
-          }}
-        >
+        <button name="+" className="button bt-orenge" onClick={changeHandler}>
           +
         </button>
       </div>
       <div className="row">
-        <button
-          className="button zero"
-          onClick={() => {
-            updateCalc("0");
-          }}
-        >
+        <button name="0" className="button zero" onClick={changeHandler}>
           0
         </button>
-        <button
-          className="button"
-          onClick={() => {
-            updateCalc(".");
-          }}
-        >
+        <button name="." className="button" onClick={changeHandler}>
           .
         </button>
-        <button className="button bt-orenge" onClick={calculate}>
+        <button name="=" className="button bt-orenge" onClick={calculate}>
           =
         </button>
       </div>
