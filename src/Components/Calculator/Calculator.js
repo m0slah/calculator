@@ -36,18 +36,14 @@ function Calculator() {
         <button className="button clear bg-lightGrey" onClick={clear}>
           Clear
         </button>
-        {/* <button className="button bg-lightGrey" onClick={backSpace}>
-          C
-        </button> */}
         <button
-          name="%"
           className="button bg-lightGrey"
-          onClick={changeHandler}
+          onClick={backSpace}
         >
           C
         </button>
-        <button className="button bt-orenge" onClick={backSpace}>
-          /
+        <button name="/" className="button bt-orenge" onClick={changeHandler}>
+          / 
         </button>
       </div>
       <div className="row ">
