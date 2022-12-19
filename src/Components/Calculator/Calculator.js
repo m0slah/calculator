@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Calculator.css";
 
 function Calculator() {
-  const [calc, setCalc] = useState("");
   const [result, setResult] = useState("");
 
   const changeHandler = (event) => {
