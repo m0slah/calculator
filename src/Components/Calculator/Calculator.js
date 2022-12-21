@@ -25,7 +25,7 @@ function Calculator() {
   };
 
   return (
-    <div className="container bg-red">
+    <div className="container bg-black">
       <div className="row">
         <div className="input">
           {result}

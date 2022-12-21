@@ -1,22 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
 
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
 
 .container {
+    height: 80vh;
     margin: 50px auto;
-    max-width: 55vh;
+    max-width: 65vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-}
+    }
+
+    @media (max-width:390px){
+        .container{
+            margin: 0 auto;
+            padding: 100px 10px;
+            border-radius: 0;
+        }
+    }
+
+ 
 
 .input {
     width: 400px;
     height: 100px;
-    padding: 8px 30px;
+    padding: 0px 30px;
     border-radius: 10px;
     border: 0;
     outline: none;
@@ -25,26 +36,47 @@
     max-width: 100px;
     color: #fff;
     font-weight: 900;
+    font-size: 36px;
 }
 
-.bg-red {
+@media (max-width:390px){
+    .input{
+        height: 200px;
+    }
+}
+
+
+.bg-black {
     background-color: #000000;
+}
+
+
+@media (max-width:390px){
+    .bg-black {
+
+    }
 }
 
 .button {
     padding: 20px 30px;
     margin: 0 5px;
-    background-color:#313131;
+    background-color: #313131;
     border-radius: 10px;
     border: 0;
     color: #fff;
+}
+
+@media (max-width:390px){
+    .button{
+        padding: 25px 30px;
+    }
 }
 
 .row {
     margin: 10px 0;
 }
 
-.clear{
+.clear {
     padding: 20px 58px;
 }
 
@@ -56,10 +88,10 @@
     padding: 20px 70px;
 }
 
-.bt-orenge{
+.bt-orenge {
     background-color: #F69906;
 }
 
-.bg-lightGrey{
-background-color: #9F9F9F;
+.bg-lightGrey {
+    background-color: #9F9F9F;
 }
